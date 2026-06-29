@@ -1222,3 +1222,306 @@ body.light-theme .footer-links a {
 body.light-theme .footer-links a:hover {
   color: #2563eb;
 }
+/* Final animation and icon improvements */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+.skill-item i {
+  width: 22px;
+  margin-right: 8px;
+  color: var(--blue-light);
+  font-size: 1.15rem;
+}
+
+.skill-card:hover .skill-item i {
+  transform: scale(1.15) rotate(-6deg);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a,
+.primary-btn,
+.secondary-btn,
+.project-link,
+.contact-card a,
+.report-download-btn,
+.skill-card,
+.project-card,
+.contact-card,
+.education-card,
+.interest-grid span {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.skill-card:hover,
+.project-card:hover,
+.contact-card:hover,
+.education-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 28px 75px rgba(47, 128, 255, 0.22);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.project-link:hover,
+.contact-card a:hover,
+.report-download-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+}
+
+.project-card:hover h3,
+.skill-card:hover h3,
+.contact-card:hover h3 {
+  color: var(--blue-light);
+}
+
+.photo-frame img {
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.08) contrast(1.05);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(55px) scale(0.98);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* Strong scroll animations */
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(70px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal-section.show-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(55px) scale(0.96);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.reveal-card.show-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.skill-card:hover,
+.project-card:hover,
+.contact-card:hover,
+.education-card:hover {
+  transform: translateY(-12px) scale(1.015);
+  box-shadow: 0 30px 85px rgba(47, 128, 255, 0.24);
+}
+
+.interest-grid span:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.project-link:hover,
+.contact-card a:hover,
+.report-download-btn:hover {
+  transform: translateY(-5px) scale(1.04);
+}
+
+.nav-links a:hover {
+  transform: translateY(-3px);
+}
+
+.photo-frame img {
+  transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.08) contrast(1.08);
+}
+
+.progress span {
+  width: 0;
+  transition: width 1.6s ease;
+}
+/* Standard technology icon colors */
+
+.fa-html5 {
+  color: #e34f26;
+}
+
+.fa-css3-alt {
+  color: #1572b6;
+}
+
+.fa-js {
+  color: #f7df1e;
+}
+
+.fa-java {
+  color: #f89820;
+}
+
+.fa-database {
+  color: #4479a1;
+}
+
+.fa-git-alt {
+  color: #f05032;
+}
+
+.fa-github {
+  color: #f8fafc;
+}
+
+.fa-gears {
+  color: #6e9fff;
+}
+
+body.light-theme .fa-github {
+  color: #181717;
+}
+
+.skill-item i {
+  width: 24px;
+  margin-right: 9px;
+  font-size: 1.25rem;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.skill-card:hover .skill-item i {
+  transform: scale(1.22) rotate(-8deg);
+  filter: brightness(1.15);
+}
+/* Standard skill icon colors - final override */
+
+.skill-item .fa-html5 {
+  color: #e34f26 !important;
+}
+
+.skill-item .fa-css3-alt {
+  color: #1572b6 !important;
+}
+
+.skill-item .fa-js {
+  color: #f7df1e !important;
+}
+
+.skill-item .fa-java {
+  color: #f89820 !important;
+}
+
+.skill-item .fa-database {
+  color: #4479a1 !important;
+}
+
+.skill-item .fa-git-alt {
+  color: #f05032 !important;
+}
+
+.skill-item .fa-github {
+  color: #ffffff !important;
+}
+
+.skill-item .fa-gears {
+  color: #6e9fff !important;
+}
+
+body.light-theme .skill-item .fa-github {
+  color: #181717 !important;
+}
+
+/* Strong JavaScript animation effects */
+
+.typing-text {
+  color: var(--blue-light);
+  font-weight: 700;
+}
+
+.typing-text::after {
+  content: "|";
+  margin-left: 4px;
+  color: var(--blue-light);
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(90px) scale(0.94);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.scroll-animate.animate-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.hero-content.scroll-animate {
+  transform: translateX(-80px);
+}
+
+.hero-card.scroll-animate {
+  transform: translateX(80px) scale(0.94);
+}
+
+.hero-content.scroll-animate.animate-show,
+.hero-card.scroll-animate.animate-show {
+  transform: translateX(0) scale(1);
+}
+
+.skill-card:hover,
+.project-card:hover,
+.contact-card:hover,
+.education-card:hover {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 30px 90px rgba(47, 128, 255, 0.25);
+}
+
+.progress span {
+  width: 0;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.counter {
+  color: var(--blue-light);
+}

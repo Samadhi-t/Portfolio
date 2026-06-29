@@ -3,26 +3,73 @@ const footerLinks = document.querySelectorAll(".footer-links a");
 const sections = document.querySelectorAll("section");
 const themeButton = document.querySelector(".theme-button");
 const skillBars = document.querySelectorAll(".progress span");
+const counters = document.querySelectorAll(".counter");
+const typingText = document.querySelector(".typing-text");
 
-sections.forEach((section) => {
-  section.classList.add("reveal");
+const animatedElements = document.querySelectorAll(
+  ".hero-content, .hero-card, .about-image, .about-content, .education-card, .skill-card, .project-card, .contact-card"
+);
+
+const typingWords = [
+  "full-stack development.",
+  "database management.",
+  "DevOps practices.",
+  "modern web technologies."
+];
+
+let wordIndex = 0;
+let characterIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  if (!typingText) return;
+
+  const currentWord = typingWords[wordIndex];
+
+  if (isDeleting) {
+    typingText.textContent = currentWord.substring(0, characterIndex - 1);
+    characterIndex--;
+  } else {
+    typingText.textContent = currentWord.substring(0, characterIndex + 1);
+    characterIndex++;
+  }
+
+  let typingSpeed = isDeleting ? 45 : 80;
+
+  if (!isDeleting && characterIndex === currentWord.length) {
+    typingSpeed = 1200;
+    isDeleting = true;
+  } else if (isDeleting && characterIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % typingWords.length;
+    typingSpeed = 300;
+  }
+
+  setTimeout(typeEffect, typingSpeed);
+}
+
+typeEffect();
+
+animatedElements.forEach((element, index) => {
+  element.classList.add("scroll-animate");
+  element.style.transitionDelay = `${index * 70}ms`;
 });
 
-const revealObserver = new IntersectionObserver(
+const animationObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
+        entry.target.classList.add("animate-show");
       }
     });
   },
   {
-    threshold: 0.15,
+    threshold: 0.18,
   }
 );
 
-sections.forEach((section) => {
-  revealObserver.observe(section);
+animatedElements.forEach((element) => {
+  animationObserver.observe(element);
 });
 
 const skillObserver = new IntersectionObserver(
@@ -36,7 +83,7 @@ const skillObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.4,
+    threshold: 0.45,
   }
 );
 
@@ -47,11 +94,54 @@ skillBars.forEach((bar) => {
   skillObserver.observe(bar);
 });
 
+let countersStarted = false;
+
+function startCounters() {
+  if (countersStarted) return;
+
+  counters.forEach((counter) => {
+    const target = Number(counter.dataset.target);
+    let current = 0;
+    const speed = 500 / target;
+
+    const updateCounter = () => {
+      if (current < target) {
+        current++;
+        counter.textContent = current;
+        setTimeout(updateCounter, speed);
+      } else {
+        counter.textContent = target;
+      }
+    };
+
+    updateCounter();
+  });
+
+  countersStarted = true;
+}
+
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        startCounters();
+      }
+    });
+  },
+  {
+    threshold: 0.4,
+  }
+);
+
+if (counters.length > 0) {
+  counterObserver.observe(document.querySelector(".hero-stats"));
+}
+
 window.addEventListener("scroll", () => {
   let currentSection = "home";
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 130;
+    const sectionTop = section.offsetTop - 140;
 
     if (window.scrollY >= sectionTop) {
       currentSection = section.getAttribute("id");
@@ -101,12 +191,21 @@ backToTopButton.addEventListener("click", () => {
   });
 });
 
-themeButton.addEventListener("click", () => {
-  document.body.classList.toggle("light-theme");
+if (themeButton) {
+  themeButton.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
 
-  if (document.body.classList.contains("light-theme")) {
-    themeButton.textContent = "☾";
-  } else {
-    themeButton.textContent = "☼";
-  }
+    if (document.body.classList.contains("light-theme")) {
+      themeButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    } else {
+      themeButton.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+  });
+}
+
+document.addEventListener("mousemove", (event) => {
+  const x = event.clientX / window.innerWidth;
+  const y = event.clientY / window.innerHeight;
+
+  document.body.style.backgroundPosition = `${x * 35}px ${y * 35}px`;
 });
