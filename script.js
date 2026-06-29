@@ -1,6 +1,8 @@
-const navLinks = document.querySelectorAll(".nav-links a, .footer-links a");
+const navLinks = document.querySelectorAll(".nav-links a");
+const footerLinks = document.querySelectorAll(".footer-links a");
 const sections = document.querySelectorAll("section");
 const themeButton = document.querySelector(".theme-button");
+const skillBars = document.querySelectorAll(".progress span");
 
 sections.forEach((section) => {
   section.classList.add("reveal");
@@ -23,18 +25,40 @@ sections.forEach((section) => {
   revealObserver.observe(section);
 });
 
+const skillObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const finalWidth = bar.getAttribute("data-width");
+        bar.style.width = finalWidth;
+      }
+    });
+  },
+  {
+    threshold: 0.4,
+  }
+);
+
+skillBars.forEach((bar) => {
+  const finalWidth = bar.style.width;
+  bar.setAttribute("data-width", finalWidth);
+  bar.style.width = "0";
+  skillObserver.observe(bar);
+});
+
 window.addEventListener("scroll", () => {
-  let currentSection = "";
+  let currentSection = "home";
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 120;
+    const sectionTop = section.offsetTop - 130;
 
     if (window.scrollY >= sectionTop) {
       currentSection = section.getAttribute("id");
     }
   });
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
+  navLinks.forEach((link) => {
     link.classList.remove("active-link");
 
     if (link.getAttribute("href") === `#${currentSection}`) {
@@ -43,10 +67,17 @@ window.addEventListener("scroll", () => {
   });
 });
 
-navLinks.forEach((link) => {
+[...navLinks, ...footerLinks].forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.forEach((navLink) => navLink.classList.remove("active-link"));
-    link.classList.add("active-link");
+
+    const matchingLink = document.querySelector(
+      `.nav-links a[href="${link.getAttribute("href")}"]`
+    );
+
+    if (matchingLink) {
+      matchingLink.classList.add("active-link");
+    }
   });
 });
 
@@ -70,14 +101,12 @@ backToTopButton.addEventListener("click", () => {
   });
 });
 
-if (themeButton) {
-  themeButton.addEventListener("click", () => {
-    document.body.classList.add("theme-clicked");
-    themeButton.textContent = "✦";
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle("light-theme");
 
-    setTimeout(() => {
-      themeButton.textContent = "☼";
-      document.body.classList.remove("theme-clicked");
-    }, 600);
-  });
-}
+  if (document.body.classList.contains("light-theme")) {
+    themeButton.textContent = "☾";
+  } else {
+    themeButton.textContent = "☼";
+  }
+});
