@@ -1310,7 +1310,7 @@ html {
 .reveal-section {
   opacity: 0;
   transform: translateY(70px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .reveal-section.show-section {
@@ -1322,8 +1322,8 @@ html {
   opacity: 0;
   transform: translateY(55px) scale(0.96);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s ease,
+    opacity 0.5s ease,
+    transform 0.5s ease,
     box-shadow 0.35s ease,
     border-color 0.35s ease;
 }
@@ -1483,7 +1483,7 @@ body.light-theme .skill-item .fa-github {
 
 .scroll-animate {
   opacity: 0;
-  transform: translateY(90px) scale(0.94);
+  transform: translateY(45px) scale(0.97);
   transition:
     opacity 0.9s ease,
     transform 0.9s ease,
@@ -1519,7 +1519,7 @@ body.light-theme .skill-item .fa-github {
 
 .progress span {
   width: 0;
-  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .counter {

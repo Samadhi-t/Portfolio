@@ -52,7 +52,7 @@ typeEffect();
 
 animatedElements.forEach((element, index) => {
   element.classList.add("scroll-animate");
-  element.style.transitionDelay = `${index * 70}ms`;
+  element.style.transitionDelay = `${index * 25}ms`;
 });
 
 const animationObserver = new IntersectionObserver(
