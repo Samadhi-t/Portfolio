@@ -50,6 +50,8 @@ https://github.com/nirodha74/lost-and-found-system
 
 A Java-based sales management system developed using object-oriented programming concepts with database connectivity.
 
+A downloadable project documentation report is included in the portfolio because the GitHub repository link is not available for this project.
+
 ## CI/CD Pipeline
 
 This project uses GitHub Actions to automatically deploy the website to GitHub Pages.
