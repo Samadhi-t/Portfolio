@@ -16,15 +16,21 @@ https://github.com/Samadhi-t/portfolio
 
 ## Features
 
-- Responsive portfolio website
+- Responsive personal portfolio website
 - Modern dark and light theme design
+- Light/dark theme toggle
 - Profile photo section
-- Smooth scroll animations
+- Smooth scrolling navigation
+- Typing text animation in the hero section
+- Scroll reveal animations
 - Animated skill progress bars
-- Project cards
-- Contact section
+- Standard technology icons for skills
+- Project cards with details
+- Lost and Found Management System repository link
+- Sales Management System documentation report download
 - Downloadable CV
-- GitHub Actions deployment workflow
+- Contact section with email, GitHub, and LinkedIn
+- GitHub Actions CI/CD pipeline
 - Automatic deployment using GitHub Pages
 
 ## Technologies Used
