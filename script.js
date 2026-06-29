@@ -43,7 +43,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-const subtitleText = "ICT Undergraduate | Aspiring DevOps & QA Professional";
+const subtitleText = "ICT Undergraduate | Aspiring DevOps Professional";
 let index = 0;
 
 function typeText() {
